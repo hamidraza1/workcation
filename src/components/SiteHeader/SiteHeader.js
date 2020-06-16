@@ -9,8 +9,8 @@ class Header extends Component {
       this.setState({ isOpen: !this.state.isOpen });
     };
     return (
-      <header className="bg-gray-900">
-        <div className="flex bg-gray-900 px-4 py-3 items-center">
+      <header className="bg-gray-900 sm:flex sm:items-center sm:justify-between xl:bg-white">
+        <div className="flex justify-between bg-gray-900 px-4 py-3 items-center xl:w-64 xl:bg-gray-900 xl:justify-center xl:py-5">
           <div>
             <svg
               width="auto"
@@ -35,11 +35,11 @@ class Header extends Component {
             </svg>
           </div>
 
-          <div className="flex">
+          <div className="flex sm:hidden">
             <button
               type="button"
               onClick={() => toggle()}
-              className="h-6 w-6 focus:outline-none"
+              className="h-6 w-6 focus:outline-none "
             >
               {this.state.isOpen ? (
                 <svg
@@ -76,40 +76,71 @@ class Header extends Component {
           </div>
         </div>
 
-        {this.state.isOpen ? (
-          <nav>
-            <div className="px-2 pt-2 pb-5 border-b border-gray-800">
+        <nav
+          className={
+            this.state.isOpen
+              ? "block"
+              : "hidden" +
+                " sm:flex sm:items-center sm:px-4 xl:flex-1 xl:justify-between"
+          }
+        >
+          <div className=" hidden xl:block xl:relative xl:max-w-xs xl:w-full">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+              <svg
+                className=" text-gray-500"
+                width="20"
+                height="20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M14.32 12.906l1.096 1.096c.412-.023.83.123 1.145.437l3 3a1.5 1.5 0 01-2.122 2.122l-3-3a1.497 1.497 0 01-.437-1.145l-1.096-1.096a8 8 0 111.414-1.414zM8 14A6 6 0 108 2a6 6 0 000 12z"
+                  fill="#A0AEC0"
+                />
+              </svg>
+            </div>
+
+            <input
+              className="block w-full bg-gray-200 text-gray-900 rounded-lg pl-10 py-2 pr-4  focus:outline-none focus:bg-white border border-transparent focus:border-gray-300"
+              placeholder="Search by ketwords"
+            />
+          </div>
+
+          <div className=" sm:flex sm:items-center  ">
+            <div className="px-2 pt-2 pb-5 border-b border-gray-800 sm:flex sm:border-b-0 sm:py-0 sm:px-0">
               <a
                 href="#"
-                className="block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800"
+                className="block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:text-sm sm:px-2 xl:text-gray-900"
               >
-                List your property
+                List
               </a>
               <a
                 href="#"
-                className="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800"
-              >
-                Messages
-              </a>
-              <a
-                href="#"
-                className="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800"
+                className="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900"
               >
                 Trips
               </a>
+              <a
+                href="#"
+                className="mt-1 block px-3 py-1 rounded font-semibold text-white hover:bg-gray-800 sm:mt-0 sm:text-sm sm:px-2 sm:ml-2 xl:text-gray-900"
+              >
+                Messages
+              </a>
             </div>
-            <div className="px-5 py-5">
+            <div className="px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
               <div className="flex items-center">
                 <img
-                  className="h-10 w-10 object-cover rounded-full border-2 border-gray-600"
+                  className="h-10 w-10 object-cover rounded-full border-2 border-gray-600 sm:h-8 sm:w-8"
                   alt=""
                   src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
                 />
-                <span className="ml-4 font-semibold text-gray-200">
+                <span className="ml-4 font-semibold text-gray-200 sm:hidden">
                   Hamid Raza
                 </span>
               </div>
-              <div>
+              <div className="sm:hidden">
                 <a
                   href="#"
                   className="mt-5 block text-gray-400 hover:text-white"
@@ -130,8 +161,8 @@ class Header extends Component {
                 </a>
               </div>
             </div>
-          </nav>
-        ) : null}
+          </div>
+        </nav>
       </header>
     );
   }

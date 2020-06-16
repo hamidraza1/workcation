@@ -1,6 +1,10 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        "72": "18rem",
+      },
+    },
     customForms: (theme) => ({
       backgroundColor: theme("colors.gray.700"),
     }),
