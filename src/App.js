@@ -17,10 +17,24 @@ function App() {
           </p>
 
           <div className="-mt-4 sm:flex sm:-mx-2 sm:overflow-x-auto sm:pb-8 ">
-            <Cards />
-            <Cards />
-            <Cards />
-            <Cards />
+            <Cards
+              bed={"3"}
+              bath={"2"}
+              title={"MOdern home in city center"}
+              price={"1,400"}
+            />
+            <Cards
+              bed={"4"}
+              bath={"2"}
+              title={"Isolated house outside of..."}
+              price={"1,250"}
+            />
+            <Cards
+              bed={"5"}
+              bath={"4"}
+              title={"Large dream home with..."}
+              price={"1,300"}
+            />
           </div>
         </main>
       </div>

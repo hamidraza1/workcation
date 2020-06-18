@@ -38,7 +38,7 @@ class SearchFilter extends Component {
 
           <button
             onClick={() => toggle()}
-            className="ml-4 inline-flex items-center bg-gray-700 hover:bg-gray-600 focus:outline-none rounded-lg pl-4 pr-3 py-2"
+            className="ml-4 inline-flex items-center bg-gray-700 hover:bg-gray-600 focus:outline-none rounded-lg pl-4 pr-3 py-2 "
           >
             <div className="w-4 h-3">
               <svg

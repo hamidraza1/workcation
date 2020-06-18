@@ -19,7 +19,7 @@ class Cards extends Component {
                 Plus
               </span>
               <div className="ml-2 text-gray-600 font-semibold text-xs uppercase tracking-wide">
-                3 beds &bull; 2 baths
+                {this.props.bed} beds &bull; 2 baths
               </div>
             </div>
 

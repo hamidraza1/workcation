@@ -3,10 +3,25 @@ import React, { Component } from "react";
 class Header extends Component {
   state = {
     isOpen: false,
+    dropDown: true,
   };
+
+  componentDidMount() {
+    document.addEventListener("keydown", (e) => {
+      if (!this.state.dropDown || e.key !== "Escape") {
+        return;
+      } else {
+        this.setState({ dropDown: false });
+      }
+    });
+  }
+
   render() {
     const toggle = () => {
       this.setState({ isOpen: !this.state.isOpen });
+    };
+    const toggleDropdown = () => {
+      this.setState({ dropDown: !this.state.dropDown });
     };
     return (
       <header className="bg-gray-900 sm:flex sm:items-center sm:justify-between xl:bg-white">
@@ -39,7 +54,7 @@ class Header extends Component {
             <button
               type="button"
               onClick={() => toggle()}
-              className="h-6 w-6 focus:outline-none "
+              className="h-6 w-6 focusfocus:outline-none "
             >
               {this.state.isOpen ? (
                 <svg
@@ -129,10 +144,10 @@ class Header extends Component {
                 Messages
               </a>
             </div>
-            <div className="px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
-              <div className="flex items-center">
+            <div className="relative px-5 py-5 sm:py-0 sm:ml-4 sm:px-0">
+              <div className="flex items-center sm:hidden">
                 <img
-                  className="h-10 w-10 object-cover rounded-full border-2 border-gray-600 sm:h-8 sm:w-8"
+                  className="h-10 w-10 object-cover rounded-full border-2 border-gray-600 "
                   alt=""
                   src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
                 />
@@ -140,22 +155,39 @@ class Header extends Component {
                   Hamid Raza
                 </span>
               </div>
-              <div className="sm:hidden">
+              <button
+                onClick={() => toggleDropdown()}
+                className="hidden sm:block focus:outline-none"
+                type="block"
+              >
+                <img
+                  className="h-8 w-8 object-cover rounded-full border-2 border-gray-600 "
+                  alt=""
+                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80"
+                />
+              </button>
+              <div
+                className={
+                  this.state.dropDown
+                    ? "sm:block mt-5 sm:bg-white sm:absolute sm:rounded-lg sm:right-0 sm:mt-3 sm:shadow-xl sm:w-48 sm:py-2"
+                    : "sm:hidden"
+                }
+              >
                 <a
                   href="#"
-                  className="mt-5 block text-gray-400 hover:text-white"
+                  className=" block text-gray-400 hover:text-white sm:text-gray-800 sm:px-4 sm:py-2 sm:hover:bg-indigo-500"
                 >
                   Account settings
                 </a>
                 <a
                   href="#"
-                  className="mt-3 block text-gray-400 hover:text-white"
+                  className="mt-3 block text-gray-400 hover:text-white sm:text-gray-800 sm:px-4 sm:py-2 sm:mt-0 sm:hover:bg-indigo-500"
                 >
                   Support
                 </a>
                 <a
                   href="#"
-                  className="mt-3 block text-gray-400 hover:text-white"
+                  className="mt-3 block text-gray-400 hover:text-white sm:text-gray-800 sm:px-4 sm:py-2 sm:mt-0 sm:hover:bg-indigo-500"
                 >
                   Sign out
                 </a>
